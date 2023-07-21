@@ -1,15 +1,20 @@
-function crearTarea(tarea) {
-  return new Promise((resolve, reject) => {
-    // Lógica para crear la tarea
-    // ...
+const express = require('express')
+const app = express()
 
-    if (tarea) {
-      resolve('Tarea creada exitosamente');
-    } else {
-      reject('Error al crear la tarea');
-    }
-  });
-}
+const tareas = [
+  { id: 1, descripcion: 'Comprar leche', completado: false },
+  { id: 2, descripcion: 'Hacer ejercicio', completado: true },
+  { id: 3, descripcion: 'Estudiar para el examen', completado: false }
+]
+
+app.get('/tareas', (req, res) => {
+  res.json(tareas)
+})
+
+app.listen(3000, () => {
+  console.log('Servidor iniciado en el puerto 3000')
+})
+
 
 function eliminarTarea(idTarea) {
   return new Promise((resolve, reject) => {
